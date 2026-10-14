@@ -1,0 +1,1 @@
+{"name":"brennar","version":"1.0.0","private":true,"description":"Brennar outdoor storefront demo","scripts":{"start":"node server.mjs","check":"node --check dist/app.js"}}
