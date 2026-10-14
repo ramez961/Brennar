@@ -1,4 +1,4 @@
 node_modules/
-.sites/
-.openai/*.tmp
 *.zip
+.DS_Store
+Thumbs.db

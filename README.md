@@ -1,25 +1,27 @@
 # Brennar
 
-An original outdoor and sporting gear storefront concept. Buildless HTML, CSS, and JavaScript with AI-generated product imagery and an original SVG logo.
+Outdoor storefront concept with original vector branding, generated product imagery, and a browser-local catalog dashboard.
 
 ## Run
 
-Run `npm start`, then open http://127.0.0.1:4173. Run `npm run check` to validate JavaScript syntax. Static deploy directory: `dist`.
+Run `npm start`, then open http://127.0.0.1:4173. Open `/admin.html` for the dashboard. No dependency installation or build step is needed. Run `npm run check` for JavaScript syntax checks.
 
-## Features
+## Repository layout
 
-Responsive home page with the original olive identity, eight illustrative products, collection filters, live search, price sorting, saved gear, product details and option selection, persistent local cart, quantity controls, demo order preview, FAQs, and a local interest list.
+Website HTML, CSS, and JavaScript are at the repository root. All photographs, the logo, and the browser icon are together in `assets/`. Serve the root folder with any static host. `server.mjs` is the local preview server.
 
-## Store studio
+## Storefront
 
-Open `/admin.html` or choose **Manage store** in the footer. Add, edit, hide, or remove products; create and rename custom categories; select a generated catalog image or upload a PNG, JPEG, or WebP up to 1 MB; and undo the latest catalog mutation during a dashboard session.
+Eight sample outdoor products, search, category filters, price sorting, saved gear, product details, options, a persistent local cart, quantity controls, demo order preview, FAQs, and a local interest list. Category labels sit below their photographs; product images fit inside their frames without cropping.
 
-The **Nerf Darts** toy category contains three editable main headings. Each heading supports multiple subtitles with separate photographs and descriptions. Six illustrative subtitle collections are included. Nerf is used as the requested category label; no brand affiliation or compatibility certification is claimed.
+## Dashboard
 
-Catalog changes persist in this browser's local storage and appear in the storefront on the same origin. They do not update other visitors' catalogs. Export and import JSON from the studio to back up or transfer changes. Import replaces the current catalog after validation. This is a local demo studio, without administrator authentication or a shared database.
+Add, edit, hide, or remove products; create and rename categories; select a catalog photograph or upload PNG, JPEG, or WebP up to 1 MB. Undo the latest change within the current dashboard session. Catalog JSON import and export support backups and transfers.
 
-## Demo scope
+The requested Nerf Darts toy category starts with three editable main headings and six image subtitles. Each main heading can hold multiple subtitles, each with its own photograph and description. No brand affiliation is claimed.
 
-All products, images, specifications, and prices are illustrative concepts. No payment is taken, no order is submitted, and no email is sent. Protection products have no verified certification. Production commerce requires real inventory, validated supplier specifications, pricing, legal policies, shipping, and payment integration.
+## Demo limitations
 
-Local browser storage is used for bag contents, saved products, and the interest-list email. The privacy dialog offers a clear-data action. Google Fonts loads externally. Generated image files are bundled locally.
+All prices, specifications, and product photographs are illustrative. No real orders, payments, or emails are submitted. Protection ratings and certifications are unverified. Browser-local catalog changes only affect visitors using that same browser and origin. No shared database or administrator authentication is connected. Export backups regularly.
+
+Google Fonts supplies typography. Product photos and vector logos are served locally. Real commerce requires supplier inventory, validated specifications, policies, shipping settings, authentication, shared storage, and payment integration.
