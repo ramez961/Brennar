@@ -18,7 +18,8 @@ const defaultCollections=[
 ];
 const defaultData={products:defaultCatalog.map(p=>({...p,active:true})),categories:['Apparel','Packs','Protection','Camp','Nerf Darts'],collectionCategory:'Nerf Darts',collections:defaultCollections};
 function loadCatalog(){try{const stored=localStorage.getItem('brennar-catalog');return stored?validateCatalog(JSON.parse(stored)):structuredClone(defaultData);}catch{return structuredClone(defaultData);}}
-function imageSrc(p){return p.image.startsWith('data:')?p.image:'assets/'+p.image+'.png';}
+const imageVersions={"bottle":"9de735046a","cap":"8f3b40d7c7","darts":"2739a83522","ear":"a5e3b2df3f","foam-rounds":"518f5187e7","glasses":"7f880f69ab","hero-mobile":"bca64b7ea1","hero":"ebe1460b86","jacket":"bb347b9cbc","lantern":"710420144b","large-darts":"98d902ed1c","pack":"a473743dbe","tent":"1443022dc3"};
+function imageSrc(p){return p.image.startsWith('data:')?p.image:'assets/'+p.image+'.webp?v='+imageVersions[p.image];}
 let storeData=loadCatalog();
 let catalog=storeData.products.filter(p=>p.active);
 

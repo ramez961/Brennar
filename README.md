@@ -4,11 +4,17 @@ Outdoor storefront concept with original vector branding, generated product imag
 
 ## Run
 
-Run `npm start`, then open http://127.0.0.1:4173. Open `/admin.html` for the dashboard. No dependency installation or build step is needed. Run `npm run check` for JavaScript syntax checks.
+Run `node server.mjs` (or `npm start`), then open http://127.0.0.1:4173. Open `/admin.html` for the dashboard. No dependency installation or build step is needed. Run `npm run check` for JavaScript syntax checks.
 
 ## Repository layout
 
 Website HTML, CSS, and JavaScript are at the repository root. All photographs, the logo, and the browser icon are together in `assets/`. Serve the root folder with any static host. `server.mjs` is the local preview server.
+
+## Loading performance
+
+The photo assets use WebP and total about 584 KB, down from 25.3 MB of original PNGs. Product images are sized to 800 pixels, and the hero includes a smaller responsive mobile variant. The hero loads with high priority; images below it decode asynchronously and load lazily. Content-versioned photo URLs allow caching without stale image replacements. Catalog scripts are deferred and font connections start early.
+
+The preview server caches file representations, serves Brotli or gzip for text and SVG, and supports ETags with 304 responses. Images are cached for one day; HTML, CSS, scripts, and logos revalidate when requested. Static hosting should provide equivalent compression and caching headers.
 
 ## Storefront
 
