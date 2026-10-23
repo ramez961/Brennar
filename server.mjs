@@ -2,9 +2,10 @@ import http from 'node:http';
 import {readFile,stat} from 'node:fs/promises';
 import {resolve,extname,sep} from 'node:path';
 import {createHash} from 'node:crypto';
+import {handleApi} from './api.mjs';
 import {brotliCompressSync,gzipSync} from 'node:zlib';
 const root=resolve('.');
-const pages=new Set(['index.html','admin.html','style.css','collections.css','admin.css','app.js','admin.js','catalog.js']);
+const pages=new Set(['index.html','admin.html','style.css','collections.css','admin.css','app.js','admin.js','admin-orders.js','catalog.js']);
 const mime={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp'};
 const cache=new Map();
 async function asset(file){
@@ -20,8 +21,9 @@ async function asset(file){
 }
 http.createServer(async(req,res)=>{
   try{
-    if(!['GET','HEAD'].includes(req.method)){res.writeHead(405,{'Allow':'GET, HEAD'}).end();return;}
     const requestPath=decodeURIComponent(new URL(req.url,'http://localhost').pathname);
+    if(requestPath.startsWith('/api/')){await handleApi(req,res);return;}
+    if(!['GET','HEAD'].includes(req.method)){res.writeHead(405,{'Allow':'GET, HEAD'}).end();return;}
     const relative=requestPath==='/'?'index.html':requestPath.slice(1);
     if(!pages.has(relative)&&!/^assets\/[a-zA-Z0-9_-]+\.(png|jpe?g|webp|svg)$/.test(relative)){res.writeHead(404).end('Not found');return;}
     const file=resolve(root,relative);

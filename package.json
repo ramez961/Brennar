@@ -5,6 +5,9 @@
   "description": "Brennar outdoor storefront and local catalog studio",
   "scripts": {
     "start": "node server.mjs",
-    "check": "node --check app.js && node --check admin.js && node --check catalog.js"
+    "check": "node --check server.mjs && node --check api.mjs && node --check orders.mjs && node --check mail.mjs && node --check app.js && node --check admin.js && node --check admin-orders.js && node --check catalog.js"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.16"
   }
 }
